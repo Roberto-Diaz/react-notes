@@ -24,11 +24,11 @@ const CreateNote = () => {
     }, [params.id])
 
     const getUsers = async () =>{
-        const res = await axios.get(`${process.env.API_URL}/users`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
         setUsers(res.data.map(user => user.username));
     }
     const getUser = async id => {
-        const res = await axios.get(`${process.env.API_URL}/notes/${id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/notes/${id}`);
         const date = moment(res.data.date).format('yyyy-MM-DD');
         setUserSelected(res.data.author);
         setTitle(res.data.title);
@@ -65,9 +65,9 @@ const CreateNote = () => {
             author: userSelected,
         }
         if(editing){
-            await axios.put(`${process.env.API_URL}/notes/${params.id}`, newNote);
+            await axios.put(`${process.env.REACT_APP_API_URL}/notes/${params.id}`, newNote);
         }else{
-            await axios.post(`${process.env.API_URL}/notes`, newNote);
+            await axios.post(`${process.env.REACT_APP_API_URL}/notes`, newNote);
         }
         window.location.href = '/';
     }
