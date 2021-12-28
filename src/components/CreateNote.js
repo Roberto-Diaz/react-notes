@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams  } from 'react-router-dom';
+import { useParams, useNavigate  } from 'react-router-dom';
 import moment from 'moment';
 
 const CreateNote = () => {    
     const params = useParams();
+    const navigate = useNavigate();
     
     const [users, setUsers] = useState([]);
     const [userSelected, setUserSelected ] = useState('');
@@ -69,7 +70,7 @@ const CreateNote = () => {
         }else{
             await axios.post(`${process.env.REACT_APP_API_URL}/notes`, newNote);
         }
-        window.location.href = '/';
+        navigate('/');
     }
 
     return (
