@@ -24,7 +24,6 @@ export default class CreateUser extends Component {
     }
 
     deleteUser = async id => {
-        console.log(id);    
         await axios.delete(`${process.env.REACT_APP_API_URL}/users/${id}`);  
         this.getUsers();    
     }
@@ -60,7 +59,7 @@ export default class CreateUser extends Component {
                         </form>
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 mt-2">
                     <ul className="list-group">
                         {
                             this.state.users.map(user => (
